@@ -1,0 +1,11 @@
+library(httr)
+library(twitteR)
+library(rjson)
+
+myapp <- oauth_app("twitter", key = "key", secret = "secret")
+
+sig <- sign_oauth1.0(myapp,
+  token = "token",
+  token_secret = Sys.getenv("token_secret"))
+
+GET("https://twitter.com/search?q=xxxxxxxx&src=typd", sig)
